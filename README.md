@@ -4,7 +4,7 @@ Azure Spring Data Cosmos getting started tutorial.
 
 ## Features
 
-This tutorial provides getting started features for `azure-spring-data-2-2-cosmos` and `azure-spring-data-2-3-cosmos` modules
+This tutorial provides getting started features for `azure-spring-data-2-2-cosmos` and `azure-spring-data-2-3-cosmos` Java SQL API modules
 
 ## Getting Started
 
@@ -24,11 +24,11 @@ mvn clean install
 
 ### Quickstart
 
-1. git clone https://github.com/Azure-Samples/azure-spring-data-cosmos-java-getting-started.git
-2. cd azure-spring-data-cosmos-java-getting-started
+1. git clone https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started.git
+2. cd azure-spring-data-cosmos-java-sql-api-getting-started
 3. cd azure-spring-data-2-2-cosmos-java-getting-started (for `azure-spring-data-2-2-cosmos`) or azure-spring-data-2-3-cosmos-java-getting-started (for `azure-spring-data-2-3-cosmos`)
 4. mvn spring-boot:run
 
 ## Resources
 
-Please refer the [source code](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos) for more information.
+Please refer to azure spring data cosmos java sql api [source code](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos) for more information.
