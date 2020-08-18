@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
-package com.azure.spring.data.cosmos;
+package com.azure.spring.data.cosmostutorial;
 
 import com.azure.spring.data.cosmos.repository.ReactiveCosmosRepository;
 import org.springframework.stereotype.Repository;
@@ -11,3 +11,4 @@ public interface ReactiveUserRepository extends ReactiveCosmosRepository<User, S
 
     Flux<User> findByFirstName(String firstName);
 }
+
