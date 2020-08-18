@@ -34,10 +34,18 @@ public class SampleApplication implements CommandLineRunner {
 
         logger.info("Using sync repository");
 
+        // <Delete>
+
         userRepository.deleteAll();
+
+        // </Delete>
+
+        // <Create>
 
         logger.info("Saving user : {}", testUser1);
         userRepository.save(testUser1);
+
+        // </Create>
 
         logger.info("Saving user : {}", testUser2);
         userRepository.save(testUser2);
@@ -55,10 +63,14 @@ public class SampleApplication implements CommandLineRunner {
 
         logger.info("Using reactive repository");
 
+        // <Query>
+
         Flux<User> users = reactiveUserRepository.findByFirstName("testFirstName");
         users.map(u -> {
             logger.info("user is : {}", u);
             return u;
         }).subscribe();
+
+        // </Query>
     }
 }
