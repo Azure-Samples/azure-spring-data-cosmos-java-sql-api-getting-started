@@ -12,7 +12,7 @@
     <dependency>
       <groupId>com.azure</groupId>
       <artifactId>azure-spring-data-2-2-cosmos</artifactId>
-      <version>3.0.0-beta.1</version>
+      <version>3.0.0-beta.2</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
@@ -33,6 +33,12 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
       <version>2.3.2.RELEASE</version>
+      <exclusions>
+        <exclusion>
+          <groupId>com.vaadin.external.google</groupId>
+          <artifactId>android-json</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
@@ -46,10 +52,10 @@
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.1</version>
+        <version>3.8.1</version>
         <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
+          <source>11</source>
+          <target>11</target>
         </configuration>
       </plugin>
       <plugin>
