@@ -50,10 +50,14 @@ public class SampleApplication implements CommandLineRunner {
         logger.info("Saving user : {}", testUser2);
         userRepository.save(testUser2);
 
+        // <Read>        
+        
         // to find by Id, please specify partition key value if collection is partitioned
         final User result = userRepository.findByIdAndLastName(testUser1.getId(), testUser1.getLastName());
         logger.info("Found user : {}", result);
-
+        
+        // </Read>        
+        
         Iterator<User> usersIterator = userRepository.findByFirstName("testFirstName").iterator();
 
         logger.info("Users by firstName : testFirstName");
