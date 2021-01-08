@@ -9,6 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.util.Iterator;
 
@@ -31,6 +32,7 @@ public class SampleApplication implements CommandLineRunner {
 
         final User testUser1 = new User("testId1", "testFirstName", "testLastName1");
         final User testUser2 = new User("testId2", "testFirstName", "testLastName2");
+        final User testUser3 = new User("testId3", "testFirstName2", "testLastName3");
 
         logger.info("Using sync repository");
 
@@ -72,5 +74,18 @@ public class SampleApplication implements CommandLineRunner {
         }).subscribe();
 
         // </Query>
+
+        //  Count users before saving
+        Long count = reactiveUserRepository.count().block();
+        logger.info("Count is : {}", count);
+
+        //  Save another user
+        reactiveUserRepository.save(testUser3).block();
+
+        //  Count again to verify user is saved and new count is 3
+        Mono<Long> countMono = reactiveUserRepository.count();
+        countMono.doOnNext(countValue -> {
+            logger.info("Count is : {}", countValue);
+        }).subscribe();
     }
 }
