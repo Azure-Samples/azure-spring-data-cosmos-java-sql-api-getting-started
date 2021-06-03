@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 package com.azure.spring.data.cosmostutorial;
 
+import com.azure.spring.data.cosmos.core.query.CosmosPageRequest;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,10 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 
 @SpringBootApplication
@@ -85,8 +87,9 @@ public class SampleApplication implements CommandLineRunner {
         Long count = reactiveUserRepository.count().block();
         logger.info("Count is : {}", count);
 
-        ArrayList<JsonNode> firstName = userRepository.findFirstNameById(testUser1.getId());
-        logger.info("Found firstName by id : {}", firstName.get(0));
+        PageRequest cosmosPageRequest = CosmosPageRequest.of(0, 100);
+        Page<JsonNode> firstName = userRepository.findFirstNameById(testUser1.getId(), cosmosPageRequest);
+        logger.info("Found firstName by id : {}", firstName.getContent().get(0));
 
         //  Save another user
         reactiveUserRepository.save(testUser3).block();
